@@ -1,0 +1,53 @@
+{
+  "name": "@identipattern/core",
+  "version": "0.1.0",
+  "description": "Deterministic identipatterns as SVG strings, DOM updater, and React component.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.mjs",
+      "require": "./dist/react.cjs"
+    },
+    "./facades/svg": {
+      "types": "./dist/facades/svg.d.ts",
+      "import": "./dist/facades/svg.mjs",
+      "require": "./dist/facades/svg.cjs"
+    },
+    "./facades/dom": {
+      "types": "./dist/facades/dom.d.ts",
+      "import": "./dist/facades/dom.mjs",
+      "require": "./dist/facades/dom.cjs"
+    },
+    "./facades/canvas": {
+      "types": "./dist/facades/canvas.d.ts",
+      "import": "./dist/facades/canvas.mjs",
+      "require": "./dist/facades/canvas.cjs"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts src/react.tsx src/facades/svg.ts src/facades/dom.ts src/facades/canvas.ts --dts --format esm,cjs --sourcemap",
+    "test": "vitest run",
+    "dev:test": "vitest",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.67",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
